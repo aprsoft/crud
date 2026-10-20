@@ -1,0 +1,15 @@
+domains:
+  - crud
+php_version: "8.5"
+node_version: "22"
+framework: laravel
+framework_version: "12"
+secured: true
+services:
+  - mailpit
+  - meilisearch
+  - mysql
+  - redis
+workers:
+  - queue
+  - schedule
