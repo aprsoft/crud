@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
@@ -28,9 +27,6 @@ class UserTable extends PowerGridComponent
 
     public function datasource(): ?Builder
     {
-        // Protege también las solicitudes de actualización de Livewire.
-        abort_unless(Auth::check(), 403);
-
         return User::query()
             ->select(['id', 'name', 'email', 'created_at']);
     }

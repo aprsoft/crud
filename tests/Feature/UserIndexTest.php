@@ -11,10 +11,13 @@ class UserIndexTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_guest_is_redirected_from_users_index(): void
+    public function test_guest_can_see_users_index_without_login(): void
     {
         $this->get(route('users.index'))
-            ->assertRedirect('/');
+            ->assertOk()
+            ->assertViewIs('users.index')
+            ->assertSee('Listado de usuarios')
+            ->assertSeeLivewire(UserTable::class);
     }
 
     public function test_authenticated_user_can_see_the_users_table(): void

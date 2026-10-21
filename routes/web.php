@@ -8,5 +8,4 @@ Route::get('/', function () {
 });
 
 Route::get('/users', [UserController::class, 'index'])
-    ->middleware('auth')
     ->name('users.index');
